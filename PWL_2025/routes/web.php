@@ -65,6 +65,8 @@ use App\Http\Controllers\PhotoController;
 //     return view('hello', ['name' => 'Ghoffar']);
 // });
 
-Route::get('/greeting', function () {
-    return view('blog.hello', ['name' => 'Ghoffar']);
-});
+// Route::get('/greeting', function () {
+//     return view('blog.hello', ['name' => 'Ghoffar']);
+// });
+
+Route::get('/greeting', [WelcomeController::class,'greeting']);

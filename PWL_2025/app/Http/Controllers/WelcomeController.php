@@ -21,4 +21,8 @@ class WelcomeController extends Controller
     public function articles($id) {
         return 'Halaman Artikel dengan Id'. $id;
     }
+
+    public function greeting(){
+        return view('blog.hello', ['name' => 'Ghoffar']);
+    }
 }
