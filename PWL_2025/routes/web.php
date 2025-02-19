@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\PhotoController;
 
 // Route::get('/', function () {
 //     return 'Selamat Datang';
@@ -45,7 +46,17 @@ use App\Http\Controllers\WelcomeController;
 //     //
 // })->name('profile');
 
-Route::get('/hello', [WelcomeController::class,'hello']);
-Route::get('/', [WelcomeController::class,'index']);
-Route::get('/about', [WelcomeController::class,'about']);
-Route::get('/articles/{id}', [WelcomeController::class,'articles']);
+// Route::get('/hello', [WelcomeController::class,'hello']);
+// Route::get('/', [WelcomeController::class,'index']);
+// Route::get('/about', [WelcomeController::class,'about']);
+// Route::get('/articles/{id}', [WelcomeController::class,'articles']);
+
+Route::resource('photos', PhotoController::class);
+
+Route::resource('photos', PhotoController::class)->only([
+    'index', 'show'
+]);
+
+Route::resource('photos', PhotoController::class)->except([
+    'create', 'store', 'update', 'destroy'
+]);
