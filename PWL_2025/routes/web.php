@@ -51,12 +51,16 @@ use App\Http\Controllers\PhotoController;
 // Route::get('/about', [WelcomeController::class,'about']);
 // Route::get('/articles/{id}', [WelcomeController::class,'articles']);
 
-Route::resource('photos', PhotoController::class);
+// Route::resource('photos', PhotoController::class);
 
-Route::resource('photos', PhotoController::class)->only([
-    'index', 'show'
-]);
+// Route::resource('photos', PhotoController::class)->only([
+//     'index', 'show'
+// ]);
 
-Route::resource('photos', PhotoController::class)->except([
-    'create', 'store', 'update', 'destroy'
-]);
+// Route::resource('photos', PhotoController::class)->except([
+//     'create', 'store', 'update', 'destroy'
+// ]);
+
+Route::get('/greeting', function () {
+    return view('hello', ['name' => 'Andi']);
+    });
