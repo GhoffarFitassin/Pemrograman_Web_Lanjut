@@ -36,6 +36,10 @@ use Illuminate\Support\Facades\Route;
 //     return 'Nama saya '.$name;
 // });
 
-Route::get('/user/{name?}', function ($name='Jhon') {
-    return 'Nama saya '.$name;
-});
+// Route::get('/user/{name?}', function ($name='Jhon') {
+//     return 'Nama saya '.$name;
+// });
+
+Route::get('/user/profile', function() {
+    //
+})->name('profile');
