@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SalesController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +16,17 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
+// home
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/category', [HomeController::class, 'products']);
+// category product
+Route::prefix('category')->group(function () {
+    Route::get('food-beverage', [ProductController::class, 'foodbeverage']);
+    Route::get('beauty-health', [ProductController::class, 'beautyhealth']);
+    Route::get('home-care', [ProductController::class, 'homecare']);
+    Route::get('baby-kid', [ProductController::class, 'babykid']);
 });
+// User
+Route::get('/user/{id}/name/{name}', [UserController::class, 'index']);
+// Sales
+Route::get('/sales', [SalesController::class, 'index']);
