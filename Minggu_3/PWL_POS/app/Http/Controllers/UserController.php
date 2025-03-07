@@ -15,18 +15,27 @@ class UserController extends Controller
         // return view('user', ['user' => $user]);
 
         // tambah data user dengn Eloquent Model
-        $user = [
-            // 'username' => 'customer 1',
-            // 'nama' => 'Pelanggan',
-            // 'password' => Hash::make('12345'),
-            // 'level_id' => 5
-            'nama' => 'Pelanggan Pertama',
+        // $user = [
+        //     // 'username' => 'customer 1',
+        //     // 'nama' => 'Pelanggan',
+        //     // 'password' => Hash::make('12345'),
+        //     // 'level_id' => 5
+        //     'nama' => 'Pelanggan Pertama',
+        // ];
+        $data = [
+            'level_id' => 2,
+            'username' => 'manager_tiga',
+            'nama' => 'Manager 3',
+            'password' => Hash::make('12345'),
         ];
         // UserModel::insert($user); // insert data ke tabel m_user
-        UserModel::where('username', 'customer 1')->update($user); //update data user
-
+        // UserModel::where('username', 'customer 1')->update($user); //update data user
+        
+        UserModel::create($data); // insert data user
         // coba alses model UserModel
+
         $user = UserModel::all(); // ambil semua data dari tabel m_user
-        return view('user', ['user' => $user]);
+        // return view('user', ['user' => $user]);
+        return view('user', ['data' => $user]);
     }
 }
