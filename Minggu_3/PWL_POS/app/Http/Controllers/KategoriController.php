@@ -74,7 +74,7 @@ class KategoriController extends Controller
 
         KategoriModel::create([
             'kategori_kode' => $request->kategori_kode,
-            'kategori_nama' => $request->nama
+            'kategori_nama' => $request->kategori_nama
         ]);
 
         return redirect('/kategori')->with('status', 'Data kategori berhasil ditambahkan');
@@ -118,7 +118,7 @@ class KategoriController extends Controller
 
         KategoriModel::where('kategori_id', $id)->update([
             'kategori_kode' => $request->kategori_kode,
-            'kategori_nama' => $request->nama
+            'kategori_nama' => $request->kategori_nama
         ]);
 
         return redirect('/kategori')->with('success', 'Data kategori berhasil diubah');

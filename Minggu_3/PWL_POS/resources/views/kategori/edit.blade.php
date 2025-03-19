@@ -30,7 +30,7 @@
                     <div class="form-group">
                         <label class="col-1 control-label col-form-label">Nama Kategori</label>
                         <div class="col-11">
-                            <input type="text" class="form-control" id="kategori_nama" name="kategori_nama" value="{{ old('kategori_nama', $kategori->nama) }}" required>
+                            <input type="text" class="form-control" id="kategori_nama" name="kategori_nama" value="{{ old('kategori_nama', $kategori->kategori_nama) }}" required>
                             @error('kategori_nama')
                                 <small class="form-text text-danger">{{ $message }}</small>
                             @enderror
