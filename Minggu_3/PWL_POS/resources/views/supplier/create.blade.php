@@ -18,7 +18,7 @@
                         @enderror
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group row">
                     <label class="col-1 control-label col-form-label">Nama supplier</label>
                     <div class="col-11">
                         <input type="text" class="form-control" id="supplier_nama" name="supplier_nama" value="{{ old('supplier_nama') }}" required>
@@ -27,7 +27,7 @@
                         @enderror
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group row">
                     <label class="col-1 control-label col-form-label">Alamat supplier</label>
                     <div class="col-11">
                         <input type="text" class="form-control" id="supplier_alamat" name="supplier_alamat" value="{{ old('supplier_alamat') }}" required>

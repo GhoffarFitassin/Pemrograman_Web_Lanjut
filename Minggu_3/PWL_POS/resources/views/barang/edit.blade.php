@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div classs="card card-outline card-primary">
+<div class="card card-outline card-primary">
     <div class="card-header">
         <h3 class="card-title">{{ $page->title }}</h3>
         <div class="card-tools"></div>
@@ -71,7 +71,7 @@
                 <div class="form-group row">
                     <label class="col-1 control-label col-form-label"></label>
                     <div class="col-11">
-                        <button type="submit" class="btn btn-primary">Simpan</buttom>
+                        <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
                         <a class="btn btn-sm btn-default ml-1" href="{{ url('barang') }}">Kembali</a>
                     </div>
                 </div>

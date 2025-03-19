@@ -27,7 +27,7 @@
                         @enderror
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group row">
                     <label class="col-1 control-label col-form-label">Nama Level</label>
                     <div class="col-11">
                         <input type="text" class="form-control" id="level_nama" name="level_nama" value="{{ old('level_nama', $level->level_nama) }}" required>
@@ -39,7 +39,7 @@
                 <div class="form-group row">
                     <label class="col-1 control-label col-form-label"></label>
                     <div class="col-11">
-                        <button type="submit" class="btn btn-primary">Simpan</buttom>
+                        <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
                         <a class="btn btn-sm btn-default ml-1" href="{{ url('level') }}">Kembali</a>
                     </div>
                 </div>
