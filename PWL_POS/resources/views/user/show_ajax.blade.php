@@ -6,28 +6,8 @@
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
-        <div class="modal-body">
-            <table class="table table-bordered table-striped table-hover table-sm">
-                <tr>
-                    <th>ID</th>
-                    <td>{{ $user->user_id }}</td>
-                </tr>
-                <tr>
-                    <th>Level</th>
-                    <td>{{ $user->level->level_nama }}</td>
-                </tr>
-                <tr>
-                    <th>Username</th>
-                    <td>{{ $user->username }}</td>
-                </tr>
-                <tr>
-                    <th>Nama</th>
-                    <td>{{ $user->nama }}</td>
-                </tr>
-                <tr>
-                    <th>Password</th>
-                    <td>********</td>
-                </tr>
-            </table>
+        <div class="modal-body pl-5 pr-5">
+            @include('user.card_template')
+        </div>
     </div>
 </div>

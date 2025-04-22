@@ -19,6 +19,11 @@ class UserModel extends User
         'username',
         'nama',
         'password',
+        'picture_path',
+        'email',
+        'no_telepon',
+        'created_at',
+        'updated_at'
     ];
 
     protected $hidden = ['password']; // jangan di tampilkan saat select 
