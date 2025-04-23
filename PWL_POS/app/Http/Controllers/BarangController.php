@@ -252,6 +252,13 @@ class BarangController extends Controller
         return redirect('/');
     }
 
+    public function show_ajax(string $id)
+    {
+        $barang = BarangModel::with('kategori')->find($id);
+
+        return view('barang.show_ajax', ['barang' => $barang]);
+    }
+
     public function edit_ajax(string $id)
     {
         $barang = BarangModel::find($id);
@@ -265,44 +272,37 @@ class BarangController extends Controller
         // cek apakah request dari ajax
         if ($request->ajax() || $request->wantsJson()) {
             $rules = [
-                'kategori_id' => ['required', 'integer', 'exists:m_kategori,kategori_id'],
-                'barang_kode' => [
-                    'required',
-                    'min:3',
-                    'max:20',
-                    'unique:m_barang,barang_kode'
-                ],
-                'barang_nama' => ['required', 'string', 'max:100'],
-                'harga_beli' => ['required', 'numeric'],
-                'harga_jual' => ['required', 'numeric'],
+                'kategori_id' => 'required|integer',
+                'barang_kode' => 'required|string|max:10|unique:m_barang,barang_kode,' . $id . ',barang_id',
+                'barang_nama' => 'required|string|max:100',
+                'harga_beli' => 'required|integer',
+                'harga_jual' => 'required|integer',
             ];
 
-            // use Illuminate\Support\Facades\Validator;
             $validator = Validator::make($request->all(), $rules);
 
             if ($validator->fails()) {
                 return response()->json([
-                    'status' => false, // respon json, true: berhasil, false: gagal
-                    'message' => 'Validasi gagal.',
-                    'msgField' => $validator->errors() // menunjukkan field mana yang error
+                    'status' => false, // response status, false: error/gagal, true: berhasil
+                    'message' => 'Validasi Gagal',
+                    'msgField' => $validator->errors(), // pesan error validasi
                 ]);
             }
 
-            try{
-                BarangModel::find($id)->update($request->all());
+            $check = BarangModel::find($id);
+            if ($check) {
+                $check->update($request->all());
                 return response()->json([
                     'status' => true,
                     'message' => 'Data berhasil diupdate'
                 ]);
-            } catch (\Illuminate\Database\QueryException $e) {
+            } else {
                 return response()->json([
-                    'status' => false, // respon json, true: berhasil, false: gagal
-                    'message' => 'Validasi gagal.',
-                    'msgField' => $validator->errors() // menunjukkan field mana yang error
+                    'status' => false,
+                    'message' => 'Data tidak ditemukan'
                 ]);
             }
         }
-        return redirect('/');
     }
 
     public function confirm_ajax(string $id)

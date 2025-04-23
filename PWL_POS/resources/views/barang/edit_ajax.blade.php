@@ -34,29 +34,35 @@
                         <select name="kategori_id" id="kategori_id" class="form-control" required>
                             <option value="">- Pilih Kategori -</option>
                             @foreach ($kategori as $k)
-                            <option value="{{ $k->kategori_id }}" {{ ($k->kategori_id == $barang->kategori_id) ? 'selected' : '' }}>{{ $k->kategori_nama }}</option>
+                                <option value="{{ $k->kategori_id }}"
+                                    {{ $k->kategori_id == $barang->kategori_id ? 'selected' : '' }}>
+                                    {{ $k->kategori_nama }}</option>
                             @endforeach
                         </select>
                         <small id="error-kategori-id" class="error-text form-text text-danger"></small>
                     </div>
                     <div class="form-group">
                         <label>Kode Barang</label>
-                        <input value="{{ $barang->barang_kode }}" type="text" name="barang_kode" id="barang_kode" class="form-control" required>
+                        <input value="{{ $barang->barang_kode }}" type="text" name="barang_kode" id="barang_kode"
+                            class="form-control" required>
                         <small id="error-barang-kode" class="error-text form-text text-danger"></small>
                     </div>
                     <div class="form-group">
                         <label>Nama Barang</label>
-                        <input value="{{ $barang->barang_nama }}" type="text" name="barang_nama" id="barang_nama" class="form-control" required>
+                        <input value="{{ $barang->barang_nama }}" type="text" name="barang_nama" id="barang_nama"
+                            class="form-control" required>
                         <small id="error-barang-nama" class="error-text form-text text-danger"></small>
                     </div>
                     <div class="form-group">
                         <label>Harga Beli</label>
-                        <input value="{{ $barang->harga_beli }}" type="text" name="harga_beli" id="harga_beli" class="form-control" required>
+                        <input value="{{ $barang->harga_beli }}" type="text" name="harga_beli" id="harga_beli"
+                            class="form-control" required>
                         <small id="error-barang-beli" class="error-text form-text text-danger"></small>
                     </div>
                     <div class="form-group">
                         <label>Harga Jual</label>
-                        <input value="{{ $barang->harga_jual }}" type="number" name="harga_jual" id="harga_jual" class="form-control" required>
+                        <input value="{{ $barang->harga_jual }}" type="number" name="harga_jual" id="harga_jual"
+                            class="form-control" required>
                         <small id="error-harga-jual" class="error-text form-text text-danger"></small>
                     </div>
                 </div>
@@ -71,11 +77,24 @@
         $(document).ready(function() {
             $("#form-edit").validate({
                 rules: {
-                    barang_kode: { required: true, minlength: 3, maxlength: 10 },
-                    barang_nama: { required: true, maxlength: 100 },
-                    harga_beli: { required: true },
-                    harga_jual: { required: true },
-                    kategori_id: { required: true }
+                    barang_kode: {
+                        required: true,
+                        minlength: 3,
+                        maxlength: 10
+                    },
+                    barang_nama: {
+                        required: true,
+                        maxlength: 100
+                    },
+                    harga_beli: {
+                        required: true
+                    },
+                    harga_jual: {
+                        required: true
+                    },
+                    kategori_id: {
+                        required: true
+                    }
                 },
                 submitHandler: function(form) {
                     $.ajax({
