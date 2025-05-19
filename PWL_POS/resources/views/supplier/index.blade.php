@@ -12,6 +12,10 @@
                     <i class="fa fa-file-excel"></i>
                     Export Excel
                 </a>
+                <a href="{{ url('supplier/export_pdf') }}" class="btn btn-sm btn-warning">
+                    <i class="fa fa-file-pdf"></i>
+                    Export PDF
+                </a>
                 <button onclick="modalAction('{{ url('supplier/create_ajax') }}')" class="btn btn-sm btn-success">
                     Tambah Ajax
                 </button>
@@ -31,6 +35,8 @@
             </table>
         </div>
     </div>
+    <div id="myModal" class="modal fade animate shake" tabindex="-1" role="dialog" data-backdrop="static"
+        data-keyboard="false" data-width="75%" aria-hidden="true"></div>
 @endsection
 
 @push('css')
@@ -38,8 +44,15 @@
 
 @push('js')
     <script>
+        function modalAction(url = '') {
+            $('#myModal').load(url, function() {
+                $(this).modal('show');
+            });
+        }
+
+        var dataSupplier;
         $(document).ready(function() {
-            var dataUser = $('#table_supplier').DataTable({
+            dataSupplier = $('#table_supplier').DataTable({
                 // Serverside: true, jika ingin menggunakan server side processing
                 serverSide: true,
                 ajax: {
