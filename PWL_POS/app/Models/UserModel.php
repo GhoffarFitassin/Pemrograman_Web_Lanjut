@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Tymon\JWTAuth\Contracts\JWTSubject; 
+use Illuminate\Database\Eloquent\Casts\Attribute;
+
 
 class UserModel extends Authenticatable implements JWTSubject
 {
@@ -15,7 +17,7 @@ class UserModel extends Authenticatable implements JWTSubject
     {
         return $this->getKey();
     }
-public function getJWTCustomClaims(): array
+    public function getJWTCustomClaims(): array
     {
         return [];
     }
@@ -33,6 +35,7 @@ public function getJWTCustomClaims(): array
         'picture_path',
         'email',
         'no_telepon',
+        'image',
         'created_at',
         'updated_at'
     ];
@@ -42,6 +45,13 @@ public function getJWTCustomClaims(): array
 
     public function level(): BelongsTo {
         return $this->belongsTo(LevelModel::class, 'level_id', 'level_id');
+    }
+
+    protected function image(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($image) => url('/storage/posts/' . $image),
+        );
     }
 
     /**
